@@ -2,10 +2,12 @@
 <%@page import="java.util.List"%>
 <%@page import="Service.AdminService"%>
 <%@ include file="../Assest/Properties/Header.jsp" %>
+<div class="container-fluid">
+<%@ include file="../Assest/Properties/AdminNavBar.jsp" %>
 
-<h2>User List</h2>
-<table>
-<thead>
+
+<table class="table">
+<thead class="bg-danger text-white text-center">
 <tr>
 <th>User ID</th>
 <th>Name</th>
@@ -20,9 +22,7 @@ List<UserModel> ulist = asobj.userList();
 for(UserModel umobj:ulist)
 {%>
 
-
-
-<tbody>
+<tbody class="bg-white">
 <tr>
 <td><%=umobj.getId() %></td>
 <td><%=umobj.getName() %></td>
@@ -35,5 +35,5 @@ for(UserModel umobj:ulist)
 
 <%} %>
 </table>
-
+</div>
 <%@ include file="../Assest/Properties/Footer.jsp" %>

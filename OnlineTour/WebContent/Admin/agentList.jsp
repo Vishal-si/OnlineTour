@@ -1,9 +1,13 @@
+<%@ include file="../Assest/Properties/Header.jsp" %>
 <%@page import="Model.AgentModel"%>
 <%@page import="java.util.List"%>
 <%@page import="Service.AdminService"%>
-<%@ include file="../Assest/Properties/Header.jsp" %>
-<table>
-<thead>
+ 
+<div class="container-fluid">
+<%@ include file="../Assest/Properties/AdminNavBar.jsp" %>
+
+<table class="table">
+<thead class="bg-danger text-white text-center">
 <tr>
 <th>Image</th>
 <th>Agent Id</th>
@@ -20,9 +24,9 @@ AdminService asobj = new AdminService();
 List<AgentModel> alist = asobj.agentList();
 for(AgentModel amobj:alist)
 {%>
-<tbody>
+<tbody class="bg-white">
 <tr>
-<td><img src="../Assest/UploadImage/<%=amobj.getSphoto() %>"></td>
+<td><img src="../Assest/UploadImage/<%=amobj.getSphoto() %>" class="image image-rounded"></td>
 <td><%=amobj.getId() %></td>
 <td><%=amobj.getName() %></td>
 <td><%=amobj.getEmail() %></td>
@@ -34,4 +38,5 @@ for(AgentModel amobj:alist)
 </tbody>
 <%} %>
 </table>
+</div>
 <%@ include file="../Assest/Properties/Footer.jsp" %>

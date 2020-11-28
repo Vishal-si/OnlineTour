@@ -1,35 +1,43 @@
 <%@ include file="../Assest/Properties/Header.jsp" %>
+
+<div class="container">
+<div class="jumbotron mt-2">
+<h3 class="display-4">Agent Sign Up</h3>
+
+</div>
+
 <form action="../AgentController" method="post"  enctype="multipart/form-data">
+<div class="form-group">
 
-<div>
-<label>Name</label>
-<input type="text" name="name" id="name">
+<label for="name">Name</label>
+<input type="text" name="name" id="name" class="form-control">
 
-<label>Email</label>
-<input type="email" name="email" id="email">
+<label for="email">Email</label>
+<input type="email" name="email" id="email" class="form-control">
 
-<label>Password</label>
-<input type="password" name="password" id="password">
+<label for="password">Password</label>
+<input type="password" name="password" id="password" class="form-control">
 
-<label>Confirm Password</label>
-<input type="password" name="cpassword" id="cpassword">
+<label for="cpassword">Confirm Password</label>
+<input type="password" name="cpassword" id="cpassword" class="form-control">
 
-<label>Age</label>
-<input type="number" name="age" id="age">
+<label for="age">Age</label>
+<input type="number" name="age" id="age" class="form-control">
 
-<label>Phone Number</label>
-<input type="text" name="phone" id="phone">
+<label for="phone">Phone Number</label>
+<input type="text" name="phone" id="phone" class="form-control">
 
-<label>Shop Name</label>
-<input type="text" name="sname" id="sname">
+<label for="sname">Shop Name</label>
+<input type="text" name="sname" id="sname" class="form-control">
 
-<label>Shop Address</label>
-<input type="text" name="saddress" id="saddess">
+<label for="saddress">Shop Address</label>
+<input type="text" name="saddress" id="saddress" class="form-control">
 
-<label>Agent Photo</label>
-<input type="file" name="sphoto" id="sphoto">
 
-<button type="submit">Submit</button>
+<label for="sphoto">Agent Photo</label>
+<input type="file" name="sphoto" id="sphoto" class="form-control file-field"><br>
+
+<button class="btn btn-success" type="submit">Submit</button>
 
 <a href="AgentLogin.jsp">Already Account</a>
 </div>
@@ -37,4 +45,5 @@
 
 
 </form>
+</div>
 <%@ include file="../Assest/Properties/Footer.jsp" %>

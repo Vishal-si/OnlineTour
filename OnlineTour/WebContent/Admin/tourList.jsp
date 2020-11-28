@@ -2,8 +2,12 @@
 <%@page import="java.util.List"%>
 <%@page import="Service.AdminService"%>
 <%@ include file="../Assest/Properties/Header.jsp" %>
-<table>
-<thead>
+
+<div class="container-fluid">
+<%@ include file="../Assest/Properties/AdminNavBar.jsp" %>
+
+<table class="table">
+<thead class="bg-danger text-white text-center">
 <tr>
 <th>Tour Id</th>
 <th>Agent Id</th>
@@ -27,7 +31,7 @@ List<RequestTourModel> tlist = asobj.tourList();
 for(RequestTourModel rmobj:tlist)
 {
 %>
-<tbody>
+<tbody class="bg-white">
 <tr>
 <td><%=rmobj.getId() %></td>
 <td><%=rmobj.getAgent_id() %></td>
@@ -51,4 +55,5 @@ for(RequestTourModel rmobj:tlist)
 
 <%} %>
 </table>
+</div>
 <%@ include file="../Assest/Properties/Footer.jsp" %>

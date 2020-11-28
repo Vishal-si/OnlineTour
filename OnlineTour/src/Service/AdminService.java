@@ -193,7 +193,8 @@ public class AdminService extends ConnectionClass{
 				amobj.setSname(rs.getString("shop_name"));
 				amobj.setSaddress(rs.getString("shop_address"));
 				amobj.setSphoto(rs.getString("agent_image"));
-				alist.add(amobj);			
+				alist.add(amobj);
+				
 			}
 			
 			
@@ -233,5 +234,11 @@ public class AdminService extends ConnectionClass{
 		}
 		return plist;
 	}
+	
+	
+			
+			
+		
+	
 	
 }

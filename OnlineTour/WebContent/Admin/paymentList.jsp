@@ -2,8 +2,12 @@
 <%@page import="Model.PaymentModel"%>
 <%@page import="Service.AdminService"%>
 <%@ include file="../Assest/Properties/Header.jsp" %>
-<table>
-<thead>
+ 
+<div class="container-fluid">
+<%@ include file="../Assest/Properties/AdminNavBar.jsp" %>
+
+<table class="table">
+<thead class="bg-danger text-white text-center">
 <tr>
 <th>Payment Id</th>
 <th>User Id</th>
@@ -18,7 +22,7 @@ List<PaymentModel> plist = asobj.paymentList();
 for(PaymentModel pmobj:plist)
 {%>
 
-<tbody>
+<tbody class="bg-white">
 <tr>
 <td><%=pmobj.getPayId() %></td>
 <td><%=pmobj.getUserId() %></td>
@@ -31,4 +35,5 @@ for(PaymentModel pmobj:plist)
 
 <%} %>
 </table>
+</div>
 <%@ include file="../Assest/Properties/Footer.jsp" %>

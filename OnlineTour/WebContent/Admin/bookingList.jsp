@@ -3,16 +3,21 @@
 <%@page import="Service.AdminService"%>
 <%@ include file="../Assest/Properties/Header.jsp" %>
 
-<table>
-<thead>
+
+<div class="container-fluid">
+<%@ include file="../Assest/Properties/AdminNavBar.jsp" %>
+
+<table class="table table-hover table-sm">
+<caption>List Of Booking</caption>
+<thead class="bg-danger text-white text-center">
 <tr>
 <th>Booking Id</th>
 <th>User Id</th>
 <th>Tour Id</th>
-<th>Total Member</th>
 <th>Adult</th>
 <th>Children</th>
 <th>Citizen</th>
+<th>Total Member</th>
 </tr>
 </thead>
 <%
@@ -23,20 +28,20 @@ for(BookingModel bmobj:blist)
 {%>
 
 
-<tbody>
+<tbody class="bg-white">
 <tr>
 <td><%=bmobj.getBooking_id() %></td>
 <td><%=bmobj.getUserId() %></td>
 <td><%=bmobj.getTour_id() %></td>
-<td><%=bmobj.getTotal_member() %></td>
 <td><%=bmobj.getAdult() %></td>
 <td><%=bmobj.getChild() %></td>
 <td><%=bmobj.getCitizen() %></td>
+<td><%=bmobj.getTotal_member() %></td>
 </tr>
 </tbody>
 
 
 <%} %>
 </table>
-
+</div>
 <%@ include file="../Assest/Properties/Footer.jsp" %>

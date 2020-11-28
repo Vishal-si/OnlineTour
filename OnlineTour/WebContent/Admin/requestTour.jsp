@@ -3,15 +3,12 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="Model.RequestTourModel"%>
 <%@ page import="java.util.List" %>
-<form method="post">
-<h3>Request Tour List</h3>
-<%
-AdminService asobj = new AdminService();
-List<RequestTourModel> tlist = asobj.reqTourList();
-for(RequestTourModel rtobj :tlist)
-{
-%>
-<table>
+
+<div class="container-fluid">
+<%@ include file="../Assest/Properties/AdminNavBar.jsp" %>
+
+<table class="table">
+<thead class="bg-danger text-white text-center text-center">
 <tr>
 <th>Image</th>
 <th>Request Id</th>
@@ -20,7 +17,15 @@ for(RequestTourModel rtobj :tlist)
 <th>Place</th>
 <th>Price</th>
 </tr>
+</thead>
 
+<%
+AdminService asobj = new AdminService();
+List<RequestTourModel> tlist = asobj.reqTourList();
+for(RequestTourModel rtobj :tlist)
+{
+%>
+<tbody>
 <tr>
 <td><img src="../Assest/UploadImage/<%=rtobj.getImage()%>" width="100px" height="100px" name="image"></td>
 <td><a href="requestDetail.jsp?registerId=<%=rtobj.getReq_id()%>"><%=rtobj.getReq_id() %></a></td>
@@ -29,10 +34,10 @@ for(RequestTourModel rtobj :tlist)
 <td><%=rtobj.getPlace() %></td>
 <td><%=rtobj.getPrice() %></td>
 </tr>
+</tbody>
 
-</table>
 <%} %>
+</table>
+</div>
 
-
-</form>
 <%@ include file="../Assest/Properties/Footer.jsp" %>
