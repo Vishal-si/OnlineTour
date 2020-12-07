@@ -28,9 +28,6 @@ int tourId = Integer.parseInt(request.getParameter("tourId"));
 <input type="text" value=<%=tourId %> name="tourId">
 
 <ul>
-<label>Case of Delivery</label>
-<ins><input type="radio" name="payment" value="caseofdelivery"></ins><br>
-
 <label>Credit Card</label>
 <ins><input type="radio" name="payment" value="creditcard"></ins><br>
 

@@ -3,6 +3,15 @@
 <%@ include file="../Assest/Properties/Header.jsp" %>
 <%@page import="Service.AgentService"%>
 
+<%
+String admin_email = (String)session.getAttribute("admin_email");
+if(admin_email==null || admin_email == "")
+{
+	response.sendRedirect("AdminLogin.jsp");
+}
+
+%>
+
 
 <%
 int id = Integer.parseInt(request.getParameter("registerId"));

@@ -6,6 +6,7 @@
 <%@page import="java.util.List"%>
 <%@page import="Service.AdminService"%>
 <%@ include file="../Assest/Properties/Header.jsp" %>
+
 <div class="container-fluid">
 <%@ include file="../Assest/Properties/AdminNavBar.jsp" %>
 
@@ -67,6 +68,17 @@ for(UserModel umobj:ulist)
 }
 
 %>
+<%
+String admin_email = (String)session.getAttribute("admin_email");
+if(admin_email==null || admin_email == "")
+{
+	response.sendRedirect("AdminLogin.jsp");
+}
+
+
+%>
+
+
 
 <!--Total Agent  -->
 <div class="container">

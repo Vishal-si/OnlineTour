@@ -7,6 +7,14 @@
 <div class="container-fluid">
 <%@ include file="../Assest/Properties/AdminNavBar.jsp" %>
 
+<%
+String admin_email = (String)session.getAttribute("admin_email");
+if(admin_email==null || admin_email == "")
+{
+	response.sendRedirect("AdminLogin.jsp");
+}
+%>
+
 <table class="table table-hover table-sm">
 <caption>List Of Booking</caption>
 <thead class="bg-danger text-white text-center">

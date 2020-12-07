@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import Model.AdminModel;
 import Service.AdminService;
@@ -42,6 +43,8 @@ public class AdminLoginController extends HttpServlet {
 			AdminService asobj = new AdminService();
 			if(asobj.adminLogin(amobj))
 			{
+				HttpSession session = request.getSession();
+				session.setAttribute("admin_email", reqobj.get("email")[0]);
 				response.sendRedirect("Admin/AdminDashboard.jsp");
 			}
 			else

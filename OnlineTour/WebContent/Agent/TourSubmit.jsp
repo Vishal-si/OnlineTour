@@ -2,6 +2,12 @@
 <%@page import="Service.AgentService"%>
 <%@page import="java.util.List"%>
 <%@ include file="../Assest/Properties/Header.jsp" %>
+
+<div class="container-fluid">
+<%@ include file="../Assest/Properties/AgentNavBar.jsp" %>
+<div class="jumbotron mt-2 bg-danger">
+
+</div>
 <form action="../TourController" method="post" enctype="multipart/form-data">
 <input type="hidden" name="task" value="submitTour">
 
@@ -15,22 +21,24 @@ for(AgentModel amobj:alist)
 %>
 
 <!-- Agent Id -->
-<input type="hidden" name="agentId" value=<%=amobj.getId()%>
+<input type="hidden" name="agentId" value=<%=amobj.getId()%>>
 <%}%>
 
 
-<label>Upload image</label>
-<input type="file" name="image">
+<div class="form-group">
 
-<label>Shop name</label>
-<input type="text" name="sname">
+<label for="image">Upload image</label>
+<input type="file" name="image" class="form-control" id="image" required>
+
+<label for="sname">Shop name</label>
+<input type="text" name="sname" class="form-control" id="sname" required>
 
 
-<label>Tour Name</label>
-<input type="text" name="tname">
+<label for="tname">Tour Name</label>
+<input type="text" name="tname" class="form-control" id="tname" required>
 
 <label>Tour State</label>
-<select name="place">
+<select name="place" class="form-control" required>
 <option>select</option>
 <option>Andaman and Nicobar</option>
 <option>Andhra Pradesh</option>
@@ -70,37 +78,38 @@ for(AgentModel amobj:alist)
 <option>WestBengal</option>
 </select>
 
-<label>City</label>
-<input type="text" name="city">
+<label for="city">City</label>
+<input type="text" name="city" class="form-control" id="city" required>
 
-<label>Pincode</label>
-<input type="text" name="pincode">
+<label for="pincode">Pincode</label>
+<input type="text" name="pincode" class="form-control" id="pincode" required>
 
-<label>Tour Day</label>
-<input type="text" name="day">
+<label for="day">Tour Day</label>
+<input type="text" name="day" class="form-control" id="day" required>
 
-<label>Price</label>
-<input type="number" name="price">
+<label for="price">Price</label>
+<input type="number" name="price" class="form-control" id="price" required>
 
-<label>Hotel Name</label>
-<input type="text" name="hotelname">
+<label for="hotelname">Hotel Name</label>
+<input type="text" name="hotelname" class="form-control" id="hotelname" required>
 
-<label>Hotel Address</label>
-<input type="text" name="hoteladdress">
+<label for="hoteladdress">Hotel Address</label>
+<input type="text" name="hoteladdress" class="form-control" id="hoteladdress" required>
 
-<label>Hotel Address pincode number</label>
-<input type="text" name="hotelpincode">
+<label for="hotelpincode">Hotel Address pincode number</label>
+<input type="text" name="hotelpincode" class="form-control" id="hotelpincode" required>
 
-<label>Hotel Manager Name</label>
-<input type="text" name="hotelmanager">
+<label for="hotelmanager">Hotel Manager Name</label>
+<input type="text" name="hotelmanager" class="form-control" id="hotelmanager" required>
 
-<label>Hotel Contact Number</label>
-<input type="text" name="hotelphone">
+<label for="hotelphone">Hotel Contact Number</label>
+<input type="text" name="hotelphone" class="form-control" id="hotelphone" required>
 
-<label>Describe the tour</label>
-<textarea  name="describe"></textarea>
+<label for="describe">Describe the tour</label>
+<textarea  name="describe" class="form-control" id="describe" required></textarea><br>
 
-<button type="submit">Submit</button>
-
+<button type="submit" class="btn btn-primary">Submit</button>
+</div>
 </form>
+</div>
 <%@ include file="../Assest/Properties/Footer.jsp" %>

@@ -2,6 +2,8 @@ package Service;
 
 import ConnectionManagement.ConnectionClass;
 import Model.AgentModel;
+import Model.BookingModel;
+import Model.PaymentModel;
 import Model.RequestTourModel;
 
 import java.sql.Connection;
@@ -236,5 +238,155 @@ public class AgentService extends ConnectionClass
 		return false;
 		
 	}
-
+	
+	public List<RequestTourModel> getDetailOfTourByAgengId(int agentId)
+	{
+		List<RequestTourModel> tlist = new ArrayList<RequestTourModel>();
+		String query="SELECT *FROM tour WHERE agent_id = ?";
+		try
+		{
+			Connection conn = getConn();
+			PreparedStatement pst = conn.prepareStatement(query);
+			pst.setInt(1, agentId);
+			ResultSet rs = pst.executeQuery();
+			while(rs.next())
+			{
+				RequestTourModel rmobj = new RequestTourModel();
+				rmobj.setId(rs.getInt("tour_id"));
+				rmobj.setImage(rs.getNString("image"));
+				rmobj.setTourname(rs.getNString("tour_name"));
+				rmobj.setPlace(rs.getString("place"));
+				rmobj.setCity(rs.getNString("city"));
+				rmobj.setPincode(rs.getNString("pincode"));
+				rmobj.setDay(rs.getNString("day"));
+				rmobj.setPrice(rs.getFloat("price"));
+				rmobj.setHname(rs.getNString("hotel_name"));
+				rmobj.setHaddress(rs.getNString("hotel_address"));
+				rmobj.setHpincode(rs.getNString("pincode"));
+				rmobj.setHotel_manager_name(rs.getString("hotel_manager"));
+				rmobj.setHphone(rs.getString("hotel_phone"));
+				rmobj.setDescribeTour(rs.getString("description"));
+				tlist.add(rmobj);
+				
+				
+			}
+			
+		}
+		catch(Exception e)
+		{
+			System.out.println(e.getMessage());
+			System.out.println(this.getClass().getName());
+		}
+		return tlist;
+	}
+	
+	public List<BookingModel> getDetailOfBookingByTourId(int tour_id)
+	{
+		List<BookingModel> blist = new ArrayList<BookingModel>();
+		String query="SELECT *FROM booking WHERE tourID = ?";
+		try
+		{
+			Connection conn = getConn();
+			PreparedStatement pst = conn.prepareStatement(query);
+			pst.setInt(1, tour_id);
+			ResultSet rs = pst.executeQuery();
+			while(rs.next())
+			{
+				BookingModel bmobj = new BookingModel();
+				bmobj.setBooking_id(rs.getInt("booking_id"));
+				bmobj.setTour_id(rs.getInt("tourID"));
+				bmobj.setUserId(rs.getInt("userId"));
+				bmobj.setTotal_member(rs.getInt("total_member"));
+				bmobj.setChild(rs.getInt("child"));
+				bmobj.setAdult(rs.getInt("adult"));
+				bmobj.setCitizen(rs.getInt("citizen"));
+				blist.add(bmobj);
+				
+			}
+			
+		}catch(Exception e)
+		{
+			System.out.println(e.getMessage());
+			System.out.println(this.getClass().getName());
+		}
+		return blist;
+		
+	}
+	
+	public List<PaymentModel> getDetailOfPaymentByTourId(int tourId)
+	{
+		List<PaymentModel> plist  =new ArrayList<PaymentModel>();
+		String query = "SELECT *FROM payment WHERE tourId = ?";
+		try
+		{
+			Connection conn = getConn();
+			PreparedStatement pst = conn.prepareStatement(query);
+			pst.setInt(1, tourId);
+			ResultSet rs = pst.executeQuery();
+			while(rs.next())
+			{
+				PaymentModel pmobj = new PaymentModel();
+				pmobj.setPayId(rs.getInt("payId"));
+				pmobj.setUserId(rs.getInt("userId"));
+				pmobj.setTourId(rs.getInt("tourId"));
+				pmobj.setAmount(rs.getFloat("amount"));
+				pmobj.setPaymentType(rs.getString("paymentType"));
+				plist.add(pmobj);
+			}
+			
+		}catch(Exception e)
+		{
+			System.out.println(e.getMessage());
+			System.out.println(this.getClass().getName());
+		}
+		return plist;
+	}
+	
+	public List<AgentModel> getPasswordByEmail(String email)
+	{
+		List<AgentModel> alist = new ArrayList<AgentModel>();
+		String query = "SELECT password FROM agent where email = ?";
+		try
+		{
+			Connection conn = getConn();
+			PreparedStatement pst = conn.prepareStatement(query);
+			pst.setString(1, email);
+			ResultSet rs = pst.executeQuery();
+			while(rs.next())
+			{
+				AgentModel amobj = new AgentModel();
+				amobj.setPassword(rs.getString("password"));
+				alist.add(amobj);
+			}
+			
+		}catch(Exception e)
+		{
+			System.out.println(e.getMessage());
+			System.out.println(this.getClass().getName());
+		}
+		return alist;
+	}
+	public boolean changePassword(String email,AgentModel amobj)
+	{
+		String query="UPDATE agent SET  password = ? WHERE email = ?";
+		try
+		{
+			Connection conn = getConn();
+			PreparedStatement pst = conn.prepareStatement(query);
+			pst.setString(1, amobj.getPassword());
+			pst.setString(2, email);
+			int x = pst.executeUpdate();
+			if(x>0)
+			{
+				return true;
+			}
+			
+		}catch(Exception e)
+		{
+			System.out.println(e.getMessage());
+			System.out.println(this.getClass().getName());
+		}
+		return false;
+		
+	}
 }

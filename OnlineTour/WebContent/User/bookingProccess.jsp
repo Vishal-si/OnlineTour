@@ -31,16 +31,16 @@ for(UserModel umobj:ulist)
 
 
 <label>Total Member</label>
-<input type="number" name="total_member">
+<input type="number" name="total_member" required>
 
 <label>Adults</label>
-<input type="number" name="adult">
+<input type="number" name="adult" required>
 
 <label>Children</label>
-<input type="number" name="child">
+<input type="number" name="child" required>
 
 <label>Citizen</label>
-<input type="number" name="citizen">
+<input type="number" name="citizen" required>
 
 <%
 int tour_id = Integer.parseInt(request.getParameter("tour_id"));
@@ -49,47 +49,47 @@ for(AgentTourViewModel amobj :tlist)
 {
 %>
 <label>Tour Name</label>
-<select name="tourname">
+<select name="tourname"  required>
 <option><%=amobj.getTour_name() %></option>
 </select>
 
 <label>Tour Place</label>
-<select name="place">
+<select name="place" required>
 <option><%=amobj.getPlace() %></option>
 </select>
 
 <label>Tour city</label>
-<select name="city">
+<select name="city" required>
 <option><%=amobj.getCity() %></option>
 </select>
 
 <label>Price Per Person</label>
-<select name="price">
+<select name="price" required>
 <option><%=amobj.getPrice() %></option>
 </select>
 
 <label>Hotel Name</label>
-<select name="hotelname">
+<select name="hotelname" required>
 <option><%=amobj.getHotel_name() %></option>
 </select>
 
 <label>Hotel Address</label>
-<select name="hoteladdress">
+<select name="hoteladdress" required>
 <option><%=amobj.getHotel_address() %>
 </select>
 
 <label>Hotel Contact</label>
-<select name="hotelphone">
+<select name="hotelphone" required>
 <option><%=amobj.getHotel_phone() %></option>
 </select>
 
 <label>Agency Name</label>
-<select name="shop_name">
+<select name="shop_name" required>
 <option><%=amobj.getShop_name() %></option>
 </select>
 
 <label>Agency Contact</label>
-<select name="shop_phone">
+<select name="shop_phone" required>
 <option><%=amobj.getPhone() %>
 </select>
 
